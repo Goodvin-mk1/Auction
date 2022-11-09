@@ -34,6 +34,7 @@
 body {
   font-family: var(--font-default);
   color: var(--color-default);
+  background: url(/static/img/stock-photo-old-craft-paper-texture-surface.jpg);
 }
 
 a {
@@ -781,7 +782,7 @@ section {
   background: #fff;
   padding: 40px 30px;
   width: 100%;
-  height: 100%;
+  height: 80%;
   border: 1px solid rgba(55, 55, 63, 0.1);
   transition: 0.3s;
 }

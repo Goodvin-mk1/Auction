@@ -34,8 +34,6 @@
           <br>
           <p>КТО МЫ <span>ТАКИЕ</span></p>
           <br>
-          <br>
-          <br>
         </div>
 
         <div class="row gy-4">
@@ -44,7 +42,7 @@
           <div class="col-lg-12 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
             <div class="content ps-0 ps-lg-5">
               <p class="fst-italic">
-                <b>Это сайт, на котором вскоре вы сможете найти и приобрести самые необычные вещи на планете.</b>
+                <b>Это сайт, на котором вскоре вы сможете приобрести самые эксклюзивные вещи планеты или же лишиться их.</b>
                 <br>
               </p>
               <ul>
@@ -53,16 +51,12 @@
                 <li><i class="bi bi-check2-all"></i> То, чем в своё время обладали величайшие люди.</li>
                 <li><i class="bi bi-check2-all"></i> Просто хорошие вещи, которые все хотят.</li>
               </ul>
-              <p>
-                <b>Покупайте огурцы - будете довольны</b>
-              </p>
-
 
             </div>
           </div>
-        </div>
-
       </div>
+
+
     </section><!-- End About Section -->
 
     <!-- ======= Why Us Section ======= -->
@@ -74,18 +68,12 @@
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="why-box">
               <h3>Почему мы?</h3>
-              <p>
-                Потому что вы не пожалеете, если купите огурцы.
+                <br>
+              <h4>Потому что.</h4>
                 <br>
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-              </p>
+
+
 
             </div>
           </div><!-- End Why Box -->
@@ -97,23 +85,23 @@
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-clipboard-data"></i>
                   <h4>Простейшая регистрация</h4>
-                  <p>И выставление на публичный/приватный аукцион</p>
+                  <p>И выставление на аукцион</p>
                 </div>
               </div><!-- End Icon Box -->
 
               <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-gem"></i>
-                  <h4>Алмазы...</h4>
-                  <p>Алмазная кирка, алмазная мотыга, алмазная броня.<br><br>Всё это у нас есть</p>
+                  <h4>Эксклюзивность</h4>
+                  <p>Больше нигде нет того, что есть у нас</p>
                 </div>
               </div><!-- End Icon Box -->
 
               <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                   <i class="bi bi-inboxes"></i>
-                  <h4>И мы не забудем собрать вам собойку</h4>
-                  <p>Бутеры или грибной супчик,<br><br>Аххххх :)</p>
+                  <h4>Юридическая помощь</h4>
+                  <p>В оформлении сделки</p>
                 </div>
               </div><!-- End Icon Box -->
 
@@ -125,58 +113,6 @@
       </div>
     </section><!-- End Why Us Section -->
 
-    <!-- ======= Menu Section ======= -->
-    <section id="menu" class="menu">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>Категории</h2>
-          <p>Пройдись <span>по категориям</span></p>
-        </div>
-
-        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
-          {% for category in categories %}
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-{{ category.name|lower }}">
-              <h4>{{ category.name|title }}</h4>
-            </a>
-          </li><!-- End tab nav item -->
-          {% endfor %}
-        </ul>
-
-        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
-          {% for category in categories %}
-          <div class="tab-pane fade" id="menu-{{ category.name|lower }}">
-
-            <div class="tab-header text-center">
-            </div>
-
-            <div class="row gy-5">
-              {% for lot in lots %}
-              {% if lot.category_id == category.id %}
-              <div class="col-lg-4 menu-item">
-                <a href="{% static 'img/menu/menu-item-1.png' %}" class="glightbox"><img src="{% static 'img/menu/menu-item-1.png' %}" class="menu-img img-fluid" alt=""></a>
-                <h4>{{ lot.name|title }}</h4>
-                <p class="ingredients">
-                  {{ lot.descr }}
-                </p>
-                <p class="price">
-                  Владелец:<br>{{ lot.owner }}
-                </p>
-              </div><!-- Menu Item -->
-              {% endif %}
-              {% endfor %}
-
-
-            </div>
-
-          </div><!-- End Dinner Menu Content -->
-          {% endfor %}
-
-        </div>
-
-      </div>
-    </section><!-- End Menu Section -->
 
     <!-- ======= Events Section ======= -->
     <section id="events" class="events">
