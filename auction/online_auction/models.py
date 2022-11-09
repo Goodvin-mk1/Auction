@@ -45,6 +45,10 @@ class Lot(models.Model):
                                  verbose_name='категория лота',
                                  null=True, blank=False
                                  )
+    image = models.ImageField(upload_to='images/',
+                              null=True, blank=True,
+                              verbose_name='изображение'
+                              )
     description = models.CharField(max_length=255,
                                    verbose_name='описание лота',
                                    help_text='255 макс.',

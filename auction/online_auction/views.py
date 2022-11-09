@@ -1,6 +1,10 @@
 from django.http import HttpRequest
 from django.shortcuts import render
+from django.views import View
 
 
-def index(request: HttpRequest):
-    return render(request, 'online_auction/index.html')
+class IndexView(View):
+    template_name = 'index.html'
+
+    def get(self, request):
+        return render(request, 'online_auction/index.html')

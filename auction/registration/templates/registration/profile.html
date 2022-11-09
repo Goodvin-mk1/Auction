@@ -11,22 +11,36 @@
 </head>
     <body>
       {% block content %}
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
 
 
-        {{ user.username }}
-        {% for lot in user_lots %}
-        {{ lot }}
-        {% endfor %}
 
+
+    <section id="why-us" class="why-us section-bg">
+      <div class="container" data-aos="fade-up">
+                {% if user_lots %}
+                <div class="section-header">
+                    <br>
+                    <p>ВАШИ <span>ЛОТЫ</span></p>
+                </div>
+          <div class="col-lg-8 d-flex align-items-center">
+              <div class="row gy-4">
+                {% for lot in user_lots %}
+                  <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                      <h4>{{ lot.name }}</h4>
+                      <p><img src="{{ lot.image.url }}" width="150"/></p>
+                    </div>
+                  </div>
+
+                {% endfor %}
+
+                {% else %}
+                    <p>You don't have any lots</p>
+                {% endif %}
+              </div>
+          </div>
+      </div>
+    </section>
      {% endblock %}
     </body>
 </html>
