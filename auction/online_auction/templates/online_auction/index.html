@@ -1,0 +1,310 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}MAIN PAGE{% endblock %}
+
+{% block content %}
+<!-- ======= Hero Section =======-->
+<!--  <section id="hero" class="hero d-flex align-items-center section-bg">-->
+<!--    <div class="container">-->
+<!--      <div class="row justify-content-between gy-5">-->
+<!--        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">-->
+<!--          <h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h2>-->
+<!--          <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>-->
+<!--          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">-->
+<!--            <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>-->
+<!--            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">-->
+<!--          <img src="assets/img/hero-img.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>&lt;!&ndash; End Hero Section &ndash;&gt;-->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <br>
+          <p>КТО МЫ <span>ТАКИЕ</span></p>
+          <br>
+          <br>
+          <br>
+        </div>
+
+        <div class="row gy-4">
+
+          </div>
+          <div class="col-lg-12 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                <b>Это сайт, на котором вскоре вы сможете найти и приобрести самые необычные вещи на планете.</b>
+                <br>
+              </p>
+              <ul>
+                <li><i class="bi bi-check2-all"></i> Античные древности со всего мира.</li>
+                <li><i class="bi bi-check2-all"></i> Эксклюзивные вещи, существующие всего в нескольких экземплярах.</li>
+                <li><i class="bi bi-check2-all"></i> То, чем в своё время обладали величайшие люди.</li>
+                <li><i class="bi bi-check2-all"></i> Просто хорошие вещи, которые все хотят.</li>
+              </ul>
+              <p>
+                <b>Покупайте огурцы - будете довольны</b>
+              </p>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-box">
+              <h3>Почему мы?</h3>
+              <p>
+                Потому что вы не пожалеете, если купите огурцы.
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              </p>
+
+            </div>
+          </div><!-- End Why Box -->
+
+          <div class="col-lg-8 d-flex align-items-center">
+            <div class="row gy-4">
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-clipboard-data"></i>
+                  <h4>Простейшая регистрация</h4>
+                  <p>И выставление на публичный/приватный аукцион</p>
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-gem"></i>
+                  <h4>Алмазы...</h4>
+                  <p>Алмазная кирка, алмазная мотыга, алмазная броня.<br><br>Всё это у нас есть</p>
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-inboxes"></i>
+                  <h4>И мы не забудем собрать вам собойку</h4>
+                  <p>Бутеры или грибной супчик,<br><br>Аххххх :)</p>
+                </div>
+              </div><!-- End Icon Box -->
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Категории</h2>
+          <p>Пройдись <span>по категориям</span></p>
+        </div>
+
+        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+          {% for category in categories %}
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-{{ category.name|lower }}">
+              <h4>{{ category.name|title }}</h4>
+            </a>
+          </li><!-- End tab nav item -->
+          {% endfor %}
+        </ul>
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+          {% for category in categories %}
+          <div class="tab-pane fade" id="menu-{{ category.name|lower }}">
+
+            <div class="tab-header text-center">
+            </div>
+
+            <div class="row gy-5">
+              {% for lot in lots %}
+              {% if lot.category_id == category.id %}
+              <div class="col-lg-4 menu-item">
+                <a href="{% static 'img/menu/menu-item-1.png' %}" class="glightbox"><img src="{% static 'img/menu/menu-item-1.png' %}" class="menu-img img-fluid" alt=""></a>
+                <h4>{{ lot.name|title }}</h4>
+                <p class="ingredients">
+                  {{ lot.descr }}
+                </p>
+                <p class="price">
+                  Владелец:<br>{{ lot.owner }}
+                </p>
+              </div><!-- Menu Item -->
+              {% endif %}
+              {% endfor %}
+
+
+            </div>
+
+          </div><!-- End Dinner Menu Content -->
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Menu Section -->
+
+    <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="section-header">
+          <h1>Some shit</h1>
+          <p>Вот <span>что у нас</span> имеется</p>
+        </div>
+
+        <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(static/img/events-1.jpg)">
+              <h3>Party, когда надоело хавать</h3>
+              <div class="price align-self-start">$300</div>
+              <p class="description">
+                Устроим пляски с шариками ,шансоном и детским плачем.
+              </p>
+            </div><!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(static/img/events-2.jpg)">
+              <h3>Похороны для продвинутых</h3>
+              <div class="price align-self-start">$289</div>
+              <p class="description">
+                Похороны тоже могут быть торжеством. Опустим усопшего вместе в последний раз.
+              </p>
+            </div><!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(static/img/events-3.jpg)">
+              <h3>Только для утончённых</h3>
+              <div class="price align-self-start">цена договорная</div>
+              <p class="description">
+                Разбросаем по столу всяких хлам так, что бы это выглядело утонченно.
+              </p>
+            </div><!-- End Event item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Events Section -->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Установите с нами контакт</h2>
+          <p>Если вы <span>уже опущенный</span></p>
+        </div>
+
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.0486898000117!2d27.67930601597431!3d53.87756234248851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcdc2493dd337%3A0x3fd0ba909ee3de81!2z0YPQuy4g0JDQvdCz0LDRgNGB0LrQsNGPLCDQnNC40L3RgdC6!5e0!3m2!1sru!2sby!4v1665751293030!5m2!1sru!2sby" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-map flex-shrink-0"></i>
+              <div>
+                <h3>Наш адрес</h3>
+                <p>ул. Ангарская 80, Минск</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>contact@example.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Звонок стоит $10 в минуту</h3>
+                <p>+375 (29) 163 74 04</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-share flex-shrink-0"></i>
+              <div>
+                <h3>Время работы</h3>
+                <div><strong>Пн-Пт:</strong> ...;
+                  <strong>Каждый день:</strong> Закрыто
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <form method="post" role="form" class="php-email-form p-3 p-md-4">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              {{ contact_form.name }}
+            </div>
+            <div class="col-xl-6 form-group">
+              {{ contact_form.email }}
+            </div>
+          </div>
+          <div class="form-group">
+            {{ contact_form.message }}
+          </div>
+          <div class="my-3">
+            <div class="loading">Загрузка</div>
+            <div class="error-message">{{ contact_error|default_if_none:"" }}</div>
+            <div class="sent-message">У вас получилось. Вы молодец!</div>
+          </div>
+          <div class="text-center"><button type="submit">Отправить письмо</button></div>
+        </form>
+        <!--End Contact Form -->
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+    <body>
+      {% block content %}
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+
+        {{ user.username }}
+        {% for lot in user_lots %}
+        {{ lot }}
+        {% endfor %}
+
+     {% endblock %}
+    </body>
+</html>
