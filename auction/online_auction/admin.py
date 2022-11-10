@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Lot, Event, Bet
+from .models import Category, Lot, Event, Bet, FeedBack
 
 
 @admin.action(description='Опубликовать')
@@ -48,3 +48,12 @@ class BetAdmin(admin.ModelAdmin):
     search_help_text = 'id/user/event/'
     list_display_links = ('id', 'event', 'user')
 
+
+@admin.register(FeedBack)
+class FeedBackAdmin(admin.ModelAdmin):
+    readonly_fields = ('email', 'message', 'created_date')
+    list_display = ('id', 'email', 'created_date')
+    list_filter = ('created_date', )
+    search_fields = ('id', 'email')
+    search_help_text = 'id/email'
+    list_display_links = ('id', 'email')

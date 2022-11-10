@@ -138,7 +138,7 @@ class Event(models.Model):
 class Bet(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.PROTECT,
-                             verbose_name='создатель',
+                             verbose_name='участник',
                              null=False, blank=False
                              )
     event = models.ForeignKey(Event,
@@ -159,10 +159,28 @@ class Bet(models.Model):
                               )
 
     def __str__(self):
-        return f'Ставка: ${self.bet} {self.user.name} на аукционе {self.event.name}'
+        return f'Ставка: {self.user} | ${self.bet} | на аукционе - {self.event.name}'
 
     class Meta:
         db_table = 'auction_bets'
         verbose_name = 'bet'
         verbose_name_plural = 'bets'
         ordering = ('created_date', 'bet')
+
+
+class FeedBack(models.Model):
+    email = models.EmailField(max_length=30, verbose_name="почта")
+    message = models.CharField(max_length=140, verbose_name="сообщение")
+    created_date = models.DateTimeField(auto_now=False,
+                                        auto_now_add=True,
+                                        verbose_name="дата обращения"
+                                        )
+
+    def __str__(self):
+        return f"{self.email}"
+
+    class Meta:
+        db_table = 'app_feedback'
+        ordering = ('created_date', 'email')
+        verbose_name = 'обращение'
+        verbose_name_plural = 'обращения'

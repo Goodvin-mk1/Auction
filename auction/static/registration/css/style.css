@@ -186,7 +186,7 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #f8f8f8;
+  background: url(/static/img/Material-54-A_Glossiness.jpg);
   padding: 150px 0; }
 
 .clear {
@@ -196,13 +196,15 @@ body {
   font-size: 13px;
   line-height: 1.8;
   color: #222;
-  background: #f8f8f8;
+  background: url(/static/img/Material-54-A_Glossiness.jpg);
+
   font-weight: 400;
   font-family: Poppins; }
 
 .container {
   width: 900px;
   background: #fff;
+  background: url(/static/img/Material-67-A_Diffuse.jpg);
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -287,7 +289,7 @@ figure {
   margin-top: 25px;
   cursor: pointer; }
   .form-submit:hover {
-    background: #4292dc; }
+    background: #282828; }
 
 #signin {
   margin-top: 16px; }

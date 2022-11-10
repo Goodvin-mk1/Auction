@@ -1,12 +1,14 @@
 from django.urls import path, include
-from .views import IndexView
+from .views import IndexView, SearchView
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', IndexView.as_view())
+    path('', IndexView.as_view()),
+    path('search/', SearchView.as_view())
+
 ]
 
 if settings.DEBUG:
