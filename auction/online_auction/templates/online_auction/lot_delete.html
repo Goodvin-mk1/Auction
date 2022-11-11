@@ -1,0 +1,18 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}ЛОТ{% endblock %}
+
+{% block content %}
+
+<div class="hero nice-form">
+  <h2>Удалить <span>лот?</span></h2>
+    <form id="delete_lot_form" action="" method="post">
+      {% csrf_token %}
+      <p>Вы точно уверены в своём намерении удалить лот <b>"{{ lot.name }}"</b>?</p>
+      <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('delete_lot_form').submit();">Я уверен в своём намерении.</a>
+    </form>
+</div>
+
+{% endblock %}

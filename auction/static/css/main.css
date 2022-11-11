@@ -31,10 +31,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+html {
+    height: 100% !important;
+}
+
 body {
   font-family: var(--font-default);
   color: var(--color-default);
   background: url(/static/img/Material-67-A_Diffuse.jpg);
+  height: 100% !important;
+  padding-top: 40px
 }
 
 a {
@@ -1560,9 +1566,37 @@ section {
 }
 
 .hero p {
-  color: #4f4f5a;
+  color: #212529;
   font-weight: 400;
   margin-bottom: 30px;
+}
+
+.nice-form {
+  display: flex;
+  width: 100% !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nice-form a {
+  width: 100%;
+  text-align: center;
+}
+
+.nice-view {
+  display: flex;
+  width: 100% !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nice-view a {
+  width: 40%;
+  text-align: center;
+}
+
+.helptext {
+  visibility: hidden;
 }
 
 .hero .btn-book-a-table {

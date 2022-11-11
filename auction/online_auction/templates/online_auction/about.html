@@ -1,0 +1,99 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}О НАС{% endblock %}
+
+{% block content %}
+
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-header">
+      <br>
+      <p>КТО МЫ <span>ТАКИЕ</span></p>
+      <br>
+    </div>
+
+      <div class="col-lg-12 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+        <div class="content ps-0 ps-lg-5">
+          <p class="fst-italic" style="font-size: 21px">
+            <b>Это сайт, на котором вскоре вы сможете приобрести самые эксклюзивные вещи планеты или же лишиться их.</b>
+            <br>
+          </p>
+          <ul>
+            <li style="font-size: 19px"><i class="bi bi-check2-all"></i> Античные древности со всего мира.</li>
+            <li style="font-size: 19px"><i class="bi bi-check2-all"></i> Эксклюзивные вещи, существующие всего в нескольких экземплярах.</li>
+            <li style="font-size: 19px"><i class="bi bi-check2-all"></i> То, чем в своё время обладали величайшие люди.</li>
+            <li style="font-size: 19px"><i class="bi bi-check2-all"></i> Просто хорошие вещи, которые все хотят.</li>
+          </ul>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="why-us" class="why-us section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="row gy-4">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-box">
+          <h3>Почему мы?</h3>
+            <br>
+          <h4>Потому что.</h4>
+            <br>
+            <br>
+        </div>
+      </div><!-- End Why Box -->
+      <div class="col-lg-8 d-flex align-items-center" style="color: white">
+        <div class="row gy-4">
+
+          <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-clipboard-data"></i>
+              <h4>Простейшая регистрация</h4>
+              <p>И выставление на аукцион</p>
+            </div>
+          </div><!-- End Icon Box -->
+
+          <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-gem"></i>
+              <h4>Эксклюзивность</h4>
+              <p>Больше нигде нет того, что есть у нас</p>
+            </div>
+          </div><!-- End Icon Box -->
+
+          <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-inboxes"></i>
+              <h4>Юридическая помощь</h4>
+              <p>В оформлении сделки</p>
+            </div>
+          </div><!-- End Icon Box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact"><br>
+  <div class="container" data-aos="fade-up"><br>
+    <div class="section-header">
+      <p>Свяжитесь <span>с нами</span> если нашли проблему</p>
+    </div>
+  <form method="post" role="form" class="php-email-form p-3 p-md-4">
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-xl-12 form-group">
+              {{ feedback_form.email }}
+        </div>
+      </div>
+      <div class="form-group">
+            {{ feedback_form.message }}
+      </div>
+      <div class="text-center"><button type="submit">Отправить</button></div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

@@ -2,25 +2,32 @@
 
 {% load static %}
 
-{% block title %}MAIN PAGE{% endblock %}
+{% block title %}ПОИСК{% endblock %}
 
 {% block content %}
 
 <section id="why-us" class="why-us section-bg" style="background: url(/static/img/Material-67-A_Diffuse.jpg)">
-      <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up" style="display: flex; flex-direction: column; align-items: center;">
             <div class="section-header">
                 <br>
+                {% if is_user_lots %}
+                <p>ВАШИ <span>ЛОТЫ</span></p>
+                {% else %}
                 <p>СУЩЕСТВУЮЩИЕ <span>ЛОТЫ</span></p>
+                {% endif %}
             </div>
           <div class="col-lg-8 d-flex align-items-center">
               <div class="row gy-4">
                 {% for lot in lots %}
-                  <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                      <h4>{{ lot.name }}</h4>
-                      <p><img src="{{ lot.image.url }}" width="150"/></p>
-                    </div>
-                  </div>
+                      <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                          <a href="/lot/{{ lot.id }}/detail">
+                            <div style="min-width: 275px !important" class="icon-box d-flex flex-column justify-content-center align-items-center">
+                              <h4>{{ lot.name }}</h4>
+                              <p><img src="{{ lot.image.url }}" width="150"/></p>
+                            </div>
+                          </a>
+                      </div>
+
                 {% endfor %}
 
               </div>

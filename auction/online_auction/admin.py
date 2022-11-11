@@ -24,10 +24,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Lot)
 class LotAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'article', 'category', 'owner', 'created_date')
+    list_display = ('id', 'name', 'category', 'owner', 'created_date')
     list_filter = ('category', 'created_date', 'owner')
-    search_fields = ('name', 'id', 'article', 'owner', 'category')
-    search_help_text = 'name/id/article/owner/category'
+    search_fields = ('name', 'id', 'owner', 'category')
+    search_help_text = 'name/id/owner/category'
     list_display_links = ('id', 'name')
 
 

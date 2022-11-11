@@ -1,0 +1,21 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}ЛОТ{% endblock %}
+
+{% block content %}
+
+<div class="hero nice-form">
+  <h2>Редактирование <span>лота</span></h2>
+  <form id="update_lot_form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+      {{ form.as_p }}
+    </table>
+    <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('update_lot_form').submit();">Сохранить</a>
+    <a style="margin-top: 15px" class="btn-book-a-table" href="/lot/{{ lot.id }}/delete">Удалить</a>
+  </form>
+</div>
+
+{% endblock %}

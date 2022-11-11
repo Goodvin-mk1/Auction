@@ -1,0 +1,20 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}ЛОТ{% endblock %}
+
+{% block content %}
+
+<div class="hero nice-form">
+  <h2>Добавление <span>лота</span></h2>
+  <form id="create_lot_form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+      {{ form.as_p }}
+    </table>
+    <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('create_lot_form').submit();">Добавить</a>
+  </form>
+</div>
+
+{% endblock %}

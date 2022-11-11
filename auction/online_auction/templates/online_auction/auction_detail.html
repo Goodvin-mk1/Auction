@@ -1,0 +1,66 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}ЛОТ{% endblock %}
+
+{% block content %}
+
+<!--<div class="hero nice-view">-->
+<!--    <div>-->
+<!--        <h2>Просмотр <span>аукциона</span></h2>-->
+<!--        <p><label><b>Название лота: </b>{{ lot.name }}</label></p>-->
+<!--        <p><label><b>Категория лота: </b>{{ lot.category.name }}</label></p>-->
+<!--        <p><label><b>Изображение: </b></label></p>-->
+<!--        <img src="{{ lot.image.url }}" style="width: 200px">-->
+<!--        <p><label><b>Описание: </b>{{ lot.description }}</label></p>-->
+<!--        <p><label><b>Владелец: </b>{{ lot.owner }}</label></p>-->
+<!--    </div>-->
+<!--    {% if lot.owner.id == user.id %}-->
+<!--        <a class="btn-book-a-table" href="/lot/{{lot.id}}/update">Изменить</a>-->
+<!--    {% endif %}-->
+<!--</div>-->
+
+<div class="hero" style="padding: 80px 0 60px 0">
+    <div style="display: flex; justify-content: center;">
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <h2>Просмотр <span>аукциона</span></h2>
+            <div style="display: flex">
+                <div>
+                    <img src="{{ event.lot.image.url }}" style="width: 400px">
+                </div>
+                <div style="margin-left: 25px">
+                    <p><label><b>Название аукциона: </b>{{ event.name }}</label></p>
+                    <p><label><b>Лот: <a href="/lot/{{ event.lot.id }}/detail">{{ event.lot.name }}</a> </b></label></p>
+                    <p><label><b>Стартовая цена: </b>{{ event.start_price }}</label></p>
+                    <p><label><b>Цена выкупа: </b>{{ event.buyout_price }}</label></p>
+                    <p><label><b>Дата начала: </b>{{ event.start_date }}</label></p>
+                    <p><label><b>Дата окончания: </b>{{ event.end_date }}</label></p>
+                    <p><label><b>Окончен: </b>{{ event.is_closed }}</label></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 40px">
+        <div style="display: flex; flex-grow: 1; justify-content: center; padding: 10px; flex-direction: column">
+            <h2>История <span>ставок</span></h2>
+            <ul>
+                {% for bet in bets %}
+                <li>{{ bet }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div style="display: flex; flex-grow: 1; justify-content: center; flex-direction: column; padding: 10px">
+            <form id="place_bet_form" action="" method="POST">
+                {% csrf_token %}
+                <input name="user" type="hidden" value="{{ user }}" />
+                <input name="event" type="hidden" value="{{ event }}" />
+                <input name="bet" type="number" />
+                <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('place_bet_form').submit();">Сделать ставку</a>
+            </form>
+            <a style="margin-top: 15px" class="btn-book-a-table" href="/lot/{{ lot.id }}/delete">Выкуп</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

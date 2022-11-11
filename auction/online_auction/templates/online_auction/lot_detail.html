@@ -1,0 +1,24 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}ЛОТ{% endblock %}
+
+{% block content %}
+
+<div class="hero nice-view">
+    <div>
+        <h2>Просмотр <span>лота</span></h2>
+        <p><label><b>Название лота: </b>{{ lot.name }}</label></p>
+        <p><label><b>Категория лота: </b>{{ lot.category.name }}</label></p>
+        <p><label><b>Изображение: </b></label></p>
+        <img src="{{ lot.image.url }}" style="width: 200px">
+        <p><label><b>Описание: </b>{{ lot.description }}</label></p>
+        <p><label><b>Владелец: </b>{{ lot.owner }}</label></p>
+    </div>
+    {% if lot.owner.id == user.id %}
+        <a class="btn-book-a-table" href="/lot/{{lot.id}}/update">Изменить</a>
+    {% endif %}
+</div>
+
+{% endblock %}

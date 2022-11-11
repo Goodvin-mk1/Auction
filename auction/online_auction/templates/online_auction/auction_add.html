@@ -1,0 +1,20 @@
+{% extends "online_auction/base.html" %}
+
+{% load static %}
+
+{% block title %}АУКЦИОН{% endblock %}
+
+{% block content %}
+
+<div class="hero nice-form">
+  <h2>Создание <span>аукциона</span></h2>
+  <form id="create_auction_form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+      {{ form.as_p }}
+    </table>
+    <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('create_auction_form').submit();">Начать</a>
+  </form>
+</div>
+
+{% endblock %}

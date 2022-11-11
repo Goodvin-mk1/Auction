@@ -59,12 +59,6 @@ class Lot(models.Model):
                               verbose_name='владелец',
                               null=False, blank=False
                               )
-    article = models.CharField(max_length=16,
-                               unique=True,
-                               verbose_name='артикль',
-                               help_text='16 макс.',
-                               null=False, blank=False
-                               )
     created_date = models.DateTimeField(auto_now=False,
                                         auto_now_add=True,
                                         verbose_name='дата добавления',
@@ -182,5 +176,5 @@ class FeedBack(models.Model):
     class Meta:
         db_table = 'app_feedback'
         ordering = ('created_date', 'email')
-        verbose_name = 'обращение'
-        verbose_name_plural = 'обращения'
+        verbose_name = 'feedback'
+        verbose_name_plural = 'feedbacks'
