@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import IndexView, SearchView, AboutView, LotCreateView, LotUpdateView, LotDetailView, LotDeleteView, \
-    ProfileView, AuctionSearchView, AuctionCreateView, AuctionDetailView
+    ProfileView, AuctionSearchView, AuctionCreateView, AuctionDetailView, place_bet
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -17,6 +17,7 @@ urlpatterns = [
     path('accounts/profile/', ProfileView.as_view()),
     path('auction/add/', AuctionCreateView.as_view()),
     path('auction/<int:pk>/detail/', AuctionDetailView.as_view()),
+    path('auction/<int:pk>/bet/', place_bet),
     path('auction-search/', AuctionSearchView.as_view()),
 
 ]

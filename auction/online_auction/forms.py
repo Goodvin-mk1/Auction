@@ -1,4 +1,4 @@
-from django.forms import Form, ModelForm, EmailInput, TextInput, Textarea
+from django.forms import Form, ModelForm, EmailInput, TextInput, Textarea, DecimalField
 
 from .models import FeedBack, Lot, Bet
 
@@ -36,9 +36,5 @@ class LotForm(ModelForm):
         fields = ('name', 'category', 'image', 'description')
 
 
-class BetForm(ModelForm):
-    class Meta:
-        model = Bet
-        fields = ('user', 'event', 'bet')
-
-
+class BetForm(Form):
+    bet = DecimalField(label="bet", max_digits=10)

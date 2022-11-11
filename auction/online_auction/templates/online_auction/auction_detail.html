@@ -51,10 +51,8 @@
             </ul>
         </div>
         <div style="display: flex; flex-grow: 1; justify-content: center; flex-direction: column; padding: 10px">
-            <form id="place_bet_form" action="" method="POST">
+            <form id="place_bet_form" action="/auction/{{ event.id }}/bet/" method="POST">
                 {% csrf_token %}
-                <input name="user" type="hidden" value="{{ user }}" />
-                <input name="event" type="hidden" value="{{ event }}" />
                 <input name="bet" type="number" />
                 <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('place_bet_form').submit();">Сделать ставку</a>
             </form>

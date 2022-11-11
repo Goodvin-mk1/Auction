@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
@@ -134,12 +136,25 @@ class AuctionDetailView(LoginRequiredMixin, View):
     def get(self, request, pk):
         event = Event.objects.filter(id=pk)[0]
         bets = Bet.objects.filter(event=event)
+
         return render(request, self.template_name, {'bets': bets, 'event': event})
 
     @staticmethod
     def post(request, pk):
         form = BetForm(request.POST)
-        if form.is_valid():
-            form.save()
+        event = Event.objects.filter(id=pk)[0]
 
-        return redirect(f"/auction/{form.instance.event.id}/detail/")
+        bet = Bet(user=request.user, event=event, bet=form.data["bet"])
+        bet.save()
+
+        return redirect(f"/auction/{event.id}/detail/")
+
+
+def place_bet(request, pk):
+    form = BetForm(request.POST)
+    event = Event.objects.filter(id=pk)[0]
+
+    bet = Bet(user=request.user, event=event, bet=form.data["bet"])
+    bet.save()
+
+    return redirect(f"/auction/{event.id}/detail/")
