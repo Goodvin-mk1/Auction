@@ -1,13 +1,16 @@
+import datetime
 import json
 
+import pytz
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpRequest
-from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from django.views.generic.base import TemplateView
 
-from .forms import FeedBackForm, BetForm
+
+from .forms import FeedBackForm, BetForm, LotForm
 from .models import Lot, Event, Bet
 
 
@@ -26,19 +29,9 @@ class IndexView(ContextMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data()
         context.update(self.context)
-        context['feedback_form'] = FeedBackForm()
         context['user'] = self.request.user
         context['lots'] = Lot.objects.all()
         return context
-
-    @staticmethod
-    def post(request: HttpRequest):
-        form = FeedBackForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return render(request, 'online_auction/index.html', {
-            'feedback_form': form,
-        })
 
 
 class SearchView(View):
@@ -58,8 +51,7 @@ class AboutView(ContextMixin, TemplateView):
         context['feedback_form'] = FeedBackForm()
         return context
 
-    @staticmethod
-    def post(request: HttpRequest):
+    def post(self, request: HttpRequest):
         form = FeedBackForm(request.POST)
         if form.is_valid():
             form.save()
@@ -114,47 +106,52 @@ class AuctionSearchView(View):
         return render(request, self.template_name, {'events': events})
 
 
-class AuctionCreateView(CreateView):
+class AuctionCreateView(ContextMixin, CreateView):
+
     template_name = 'online_auction/auction_add.html'
     model = Event
     fields = (
-        'name', 'lot', 'buyout_price', 'start_price', 'start_date',
-        'end_date'
+        'name', 'lot', 'buyout_price', 'start_price', 'end_date'
     )
     success_url = '/auction-search'
 
     def form_valid(self, form):
+        form.instance.creator = self.request.user
         form.instance.is_started = True
         return super().form_valid(form)
 
 
-class AuctionDetailView(LoginRequiredMixin, View):
+class AuctionDetailView(ContextMixin, View):
     template_name = 'online_auction/auction_detail.html'
     model = Event
     fields = ('name', 'lot', 'buyout_price', 'start_price', 'start_date', 'end_date')
 
+    def get_context_data(self, **kwargs):
+        context = super(AuctionDetailView, self).get_context_data()
+        context.update(self.context)
+        context['lot_form'] = LotForm()
+        return context
+
     def get(self, request, pk):
         event = Event.objects.filter(id=pk)[0]
         bets = Bet.objects.filter(event=event)
+        if bets:
+            last_bet = Bet.objects.filter(event=event).values_list('bet').last()[0]
+        else:
+            last_bet = None
+        return render(request, self.template_name, {'bets': bets, 'event': event, 'last_bet': last_bet})
 
-        return render(request, self.template_name, {'bets': bets, 'event': event})
-
-    @staticmethod
-    def post(request, pk):
+    def post(self, request, pk):
         form = BetForm(request.POST)
         event = Event.objects.filter(id=pk)[0]
-
         bet = Bet(user=request.user, event=event, bet=form.data["bet"])
-        bet.save()
+        if form.is_valid():
+            bet.save()
+        else:
+            return HttpResponse("Invalid data")
 
-        return redirect(f"/auction/{event.id}/detail/")
+        return redirect(f"/auction/{event.id}/detail/", {'lot_form': form})
 
 
-def place_bet(request, pk):
-    form = BetForm(request.POST)
-    event = Event.objects.filter(id=pk)[0]
-
-    bet = Bet(user=request.user, event=event, bet=form.data["bet"])
-    bet.save()
-
-    return redirect(f"/auction/{event.id}/detail/")
+def error404(request, exception):
+    return render(request, 'online_auction/404.html')

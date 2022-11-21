@@ -100,18 +100,18 @@ class Event(models.Model):
                                       )
 
     start_date = models.DateTimeField(auto_now=False,
-                                      auto_now_add=False,
+                                      auto_now_add=True,
                                       verbose_name='дата начала'
                                       )
     end_date = models.DateTimeField(auto_now=False,
                                     auto_now_add=False,
                                     verbose_name='дата окончания'
                                     )
-    winner = models.ForeignKey(User,
-                               on_delete=models.PROTECT,
-                               verbose_name='победитель',
-                               null=True, blank=True
-                               )
+    creator = models.ForeignKey(User,
+                                on_delete=models.PROTECT,
+                                verbose_name='создатель',
+                                null=True, blank=True
+                                )
     is_started = models.BooleanField(verbose_name='начат',
                                      default=False
                                      )

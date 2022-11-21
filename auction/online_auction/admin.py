@@ -33,10 +33,10 @@ class LotAdmin(admin.ModelAdmin):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'lot', 'start_date', 'end_date', 'is_started', 'is_closed')
+    list_display = ('id', 'name', 'lot', 'creator', 'start_date', 'end_date', 'is_started', 'is_closed')
     list_filter = ('buyout_price', 'is_started', 'is_closed')
     search_fields = ('id', 'name', 'lot')
-    search_help_text = 'id/name/lot/'
+    search_help_text = 'id/name/lot'
     list_display_links = ('id', 'name')
 
 

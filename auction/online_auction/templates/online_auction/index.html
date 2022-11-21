@@ -20,10 +20,12 @@
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
             {% for lot in lots %}
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background: {{ lot.image.url }}, border-style: solid">
-              <p><img src="{{ lot.image.url }}" width="400"/></p>
-              <h3>{{ lot.name }}</h3>
-              <div class="price align-self-start">$300</div>
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background: {{ lot.image.url }}, border-style: solid; align-items: center;">
+              <p><img src="{{ lot.image.url }}" width="350"/></p>
+              <a href="/lot/{{ lot.id }}/detail">
+                <h3>{{ lot.name }}</h3>
+              </a>
+<!--              <div class="price align-self-start">$300</div>-->
               <p class="description">
                 {{ lot.description }}
               </p>

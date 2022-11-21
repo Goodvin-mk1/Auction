@@ -51,12 +51,14 @@
             </ul>
         </div>
         <div style="display: flex; flex-grow: 1; justify-content: center; flex-direction: column; padding: 10px">
-            <form id="place_bet_form" action="/auction/{{ event.id }}/bet/" method="POST">
+            <form id="bet_form" action="/auction/{{ event.id }}/bet/" method="POST">
                 {% csrf_token %}
-                <input name="bet" type="number" />
-                <a class="btn-book-a-table" href="javascript:{}" onclick="document.getElementById('place_bet_form').submit();">Сделать ставку</a>
+                    {{ bet_form.bet }}
+                <input name="bet" type="number" step="any" required placeholder="Ваша ставка" min="{{ last_bet }}"/><h6>Последняя ставка: {{ last_bet }}</h6>
+                <div><button style="border: 0; margin-top: 15px" class="btn-book-a-table" type="submit">Сделать ставку</button></div>
+<!--                <a class="btn-book-a-table" onclick="document.getElementById('place_bet_form').submit();">Сделать ставку</a>-->
             </form>
-            <a style="margin-top: 15px" class="btn-book-a-table" href="/lot/{{ lot.id }}/delete">Выкуп</a>
+            <a style="margin-top: 15px; width: 250px" class="btn-book-a-table" href="/lot/{{ lot.id }}/delete">Выкуп</a>
         </div>
     </div>
 </div>

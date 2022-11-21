@@ -1,6 +1,6 @@
 from django.forms import Form, ModelForm, EmailInput, TextInput, Textarea, DecimalField
 
-from .models import FeedBack, Lot, Bet
+from .models import FeedBack, Lot, Bet, Event
 
 
 class FeedBackForm(ModelForm):
@@ -37,4 +37,20 @@ class LotForm(ModelForm):
 
 
 class BetForm(Form):
-    bet = DecimalField(label="bet", max_digits=10)
+    class Meta:
+        model = Bet
+        fields = ('bet',)
+        widgets = {
+            'bet': DecimalField(
+                error_messages={
+                    'required': 'Please enter your name'
+                }
+
+            )
+        }
+
+
+class AuctionAddForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ('name', 'buyout_price', 'start_price', 'end_date')

@@ -17,7 +17,8 @@
         <p><label><b>Владелец: </b>{{ lot.owner }}</label></p>
     </div>
     {% if lot.owner.id == user.id %}
-        <a class="btn-book-a-table" href="/lot/{{lot.id}}/update">Изменить</a>
+        <a class="btn-book-a-table" href="/lot/{{lot.id}}/update" style="margin-bottom: 20px">Изменить</a>
+        <a class="btn-book-a-table" href="/auction/{{lot.id}}/add">Выставить на аукцион</a>
     {% endif %}
 </div>
 
